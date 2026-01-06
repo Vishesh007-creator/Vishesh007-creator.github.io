@@ -5,73 +5,77 @@
 <title>The Mind Power English Speaking Studio</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-
 <style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:'Poppins',sans-serif;
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,Helvetica,sans-serif;}
 
-body{
-  background:#f6f8fc;
-  color:#222;
-}
+body{background:#f5f7fb;color:#222}
 
 /* NAVBAR */
 .navbar{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  padding:16px 6%;
+  padding:15px 40px;
   background:#fff;
-  box-shadow:0 2px 10px rgba(0,0,0,0.05);
   position:sticky;
   top:0;
   z-index:1000;
+  box-shadow:0 4px 20px rgba(0,0,0,.08);
 }
 
-.nav-left{
+.logo{
   display:flex;
   align-items:center;
-  gap:12px;
+  gap:10px;
+  font-weight:bold;
+  font-size:18px;
 }
 
-.nav-left img{
-  height:42px;
+.logo img{height:40px}
+
+.nav-links{
+  list-style:none;
+  display:flex;
+  gap:25px;
 }
 
 .nav-links a{
-  margin:0 12px;
   text-decoration:none;
   color:#333;
   font-weight:500;
 }
 
-.nav-btn{
-  background:#5b5ce2;
-  color:#fff;
-  padding:10px 20px;
+.nav-actions{
+  display:flex;
+  gap:12px;
+}
+
+.login-btn{
+  padding:8px 16px;
+  border:2px solid #6a5cff;
+  background:transparent;
+  color:#6a5cff;
   border-radius:8px;
-  text-decoration:none;
-  font-weight:600;
+  cursor:pointer;
+}
+
+.enquire-btn{
+  padding:8px 18px;
+  background:#6a5cff;
+  color:#fff;
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
 }
 
 /* HERO */
 .hero{
-  background:linear-gradient(135deg,#2b1055,#7f00ff);
-  color:#fff;
-  padding:80px 6%;
-}
-
-.hero-box{
   display:flex;
-  align-items:center;
   justify-content:space-between;
-  gap:40px;
-  flex-wrap:wrap;
+  align-items:center;
+  padding:80px 60px;
+  background:linear-gradient(135deg,#2b0a5f,#7a00ff);
+  color:#fff;
 }
 
 .hero-text{
@@ -79,121 +83,93 @@ body{
 }
 
 .hero-text h1{
-  font-size:44px;
-  font-weight:700;
+  font-size:48px;
   margin-bottom:15px;
 }
 
-.hero-text h1 span{
-  color:#ffcc00;
-}
+.hero-text h1 span{color:#ffd400}
 
 .hero-text p{
   font-size:18px;
-  opacity:0.9;
   margin-bottom:25px;
 }
 
-.hero-text a{
-  display:inline-block;
-  background:#ffcc00;
+.hero-btn{
+  padding:14px 26px;
+  background:#ffd400;
   color:#000;
-  padding:14px 28px;
+  border:none;
   border-radius:10px;
-  text-decoration:none;
-  font-weight:600;
+  font-size:16px;
+  cursor:pointer;
 }
 
-.hero-img img{
-  width:320px;
-  max-width:100%;
-  border-radius:20px;
-  box-shadow:0 10px 30px rgba(0,0,0,0.3);
-}
-
-/* SECTION */
-section{
-  padding:80px 6%;
-}
-
-.section-title{
-  font-size:32px;
-  font-weight:700;
-  margin-bottom:10px;
-}
-
-.section-sub{
-  color:#555;
-  margin-bottom:40px;
-}
-
-/* ABOUT */
-.about{
-  display:flex;
-  gap:40px;
-  align-items:center;
-  flex-wrap:wrap;
-}
-
-.about img{
-  width:280px;
-  border-radius:20px;
-}
-
-.about-text{
-  max-width:600px;
-}
-
-/* COURSES */
-.courses{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-  gap:25px;
-}
-
-.course{
+.hero-image{
   background:#fff;
-  padding:25px;
-  border-radius:16px;
-  box-shadow:0 6px 20px rgba(0,0,0,0.08);
-}
-
-.course h3{
-  margin-bottom:6px;
-  color:#5b5ce2;
-}
-
-/* CONTACT */
-.contact{
-  background:#5b5ce2;
-  color:#fff;
-  text-align:center;
-  padding:60px 20px;
-  border-radius:20px;
-}
-
-.contact a{
-  display:inline-block;
-  margin-top:20px;
-  background:#ffcc00;
-  color:#000;
-  padding:14px 30px;
-  border-radius:10px;
-  font-weight:600;
-  text-decoration:none;
-}
-
-/* FOOTER */
-footer{
-  text-align:center;
   padding:20px;
-  color:#777;
+  border-radius:24px;
+}
+
+.hero-image img{
+  width:360px;
+  max-width:100%;
+  border-radius:18px;
+}
+
+/* MODAL */
+.modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.6);
+  justify-content:center;
+  align-items:center;
+  z-index:2000;
+}
+
+.modal-box{
+  background:#fff;
+  padding:30px;
+  width:320px;
+  border-radius:14px;
+  position:relative;
+}
+
+.modal-box h2{
+  margin-bottom:15px;
+}
+
+.modal-box input{
+  width:100%;
+  padding:10px;
+  margin:8px 0;
+  border-radius:8px;
+  border:1px solid #ccc;
+}
+
+.modal-box button{
+  width:100%;
+  padding:12px;
+  background:#6a5cff;
+  color:#fff;
+  border:none;
+  border-radius:8px;
+  margin-top:10px;
+  cursor:pointer;
+}
+
+.close{
+  position:absolute;
+  top:10px;
+  right:14px;
+  font-size:22px;
+  cursor:pointer;
 }
 
 /* RESPONSIVE */
-@media(max-width:768px){
-  .hero-text h1{font-size:34px;}
-  .nav-links{display:none;}
+@media(max-width:900px){
+  .hero{flex-direction:column;text-align:center}
+  .hero-image{margin-top:30px}
 }
 </style>
 </head>
@@ -201,138 +177,104 @@ footer{
 <body>
 
 <!-- NAVBAR -->
-<div class="navbar">
-  <div class="nav-left">
-    <img src="logo.png" alt="TMP Logo">
-    <strong>Mind Power</strong>
+<header class="navbar">
+  <div class="logo">
+    <img src="logo.png" alt="Logo">
+    <span>Mind Power</span>
   </div>
 
-  <div class="nav-links">
-    <a href="#">Courses</a>
-    <a href="#">About</a>
-    <a href="#">Contact</a>
-  </div>
+  <ul class="nav-links">
+    <li><a href="#">Courses</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="#">Contact</a></li>
+  </ul>
 
-  <a href="#contact" class="nav-btn">Enquire Now</a>
-</div>
+  <div class="nav-actions">
+    <button class="login-btn" onclick="openLogin()">Login</button>
+    <button class="enquire-btn" onclick="openRegister()">Enquire</button>
+  </div>
+</header>
 
 <!-- HERO -->
-<div class="hero">
-  <div class="hero-box">
-    <div class="hero-text">
-      <p>Since 1999 • Extraordinary Prep for an Extraordinary Future</p>
-      <h1>
-        The Mind Power <br>
-        <span>English Speaking Studio</span>
-      </h1>
-      <p>
-        Spoken English • IELTS • Interview Preparation • Defence & Competitive Exams
-      </p>
-      <a href="#contact">Book Free Demo</a>
-    </div>
+<section class="hero">
+  <div class="hero-text">
+    <p>Since 1999 • Extraordinary Prep for an Extraordinary Future</p>
+    <h1>The Mind Power <br><span>English Speaking Studio</span></h1>
+    <p>Spoken English • IELTS • Interviews • Defence Exams</p>
+    <button class="hero-btn" onclick="openRegister()">Book Free Demo</button>
+  </div>
 
-    <div class="hero-img">
-      <img src="mentor.png" alt="Mentor">
-    </div>
+  <div class="hero-image">
+    <img src="mentor.png" alt="Mentor">
+  </div>
+</section>
+
+<!-- LOGIN MODAL -->
+<div id="loginModal" class="modal">
+  <div class="modal-box">
+    <span class="close" onclick="closeModal()">×</span>
+    <h2>Login</h2>
+    <input id="loginEmail" type="email" placeholder="Email">
+    <input id="loginPassword" type="password" placeholder="Password">
+    <button onclick="loginUser()">Login</button>
   </div>
 </div>
 
-<!-- ABOUT -->
-<section>
-  <div class="section-title">About the Mentor</div>
-  <div class="section-sub">25+ years of excellence in English training</div>
-
-  <div class="about">
-    <img src="mentor.png" alt="Mentor Photo">
-    <div class="about-text">
-      <p>
-        <strong>Mr. R. P. Srivastava</strong> is a senior English trainer with
-        more than 25 years of teaching experience. He has helped thousands
-        of students gain confidence, fluency, and career success.
-      </p>
-    </div>
+<!-- REGISTER MODAL -->
+<div id="registerModal" class="modal">
+  <div class="modal-box">
+    <span class="close" onclick="closeModal()">×</span>
+    <h2>Enquire / Register</h2>
+    <input id="regEmail" type="email" placeholder="Email">
+    <input id="regPassword" type="password" placeholder="Password">
+    <button onclick="registerUser()">Register</button>
   </div>
-</section>
+</div>
 
-<!-- COURSES -->
-<section>
-  <div class="section-title">Our Courses</div>
-  <div class="section-sub">Career-focused & certification programs</div>
+<!-- UI JS -->
+<script>
+function openLogin(){document.getElementById("loginModal").style.display="flex";}
+function openRegister(){document.getElementById("registerModal").style.display="flex";}
+function closeModal(){
+  document.getElementById("loginModal").style.display="none";
+  document.getElementById("registerModal").style.display="none";
+}
+</script>
 
-  <div class="courses">
-    <div class="course"><h3>Basic Certificate</h3><p>50 Hours</p></div>
-    <div class="course"><h3>Intermediate Certificate</h3><p>45 Hours</p></div>
-    <div class="course"><h3>Advance Certificate</h3><p>25 Hours</p></div>
-    <div class="course"><h3>Interview Crackers</h3><p>25 Hours</p></div>
-    <div class="course"><h3>IELTS / TOEFL</h3></div>
-    <div class="course"><h3>SSB / Agniveer</h3></div>
-  </div>
-</section>
+<!-- 🔥 FIREBASE AUTH (REAL LOGIN) -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword }
+from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
-<!-- CONTACT -->
-<section id="contact">
-  <div class="contact">
-    <h2>Contact for Free Demo</h2>
-    <p>📞 +91 93692 96498</p>
-    <p>📧 ravidapatriot72@gmail.com</p>
-    <a href="https://wa.me/919369296498">WhatsApp Now</a>
-  </div>
-</section>
+const firebaseConfig = {
+  apiKey: "AIzaSyC50hINl26vTBvxM7W7TV01MGa36kbLl_U",
+  authDomain: "mindpowerenglish.firebaseapp.com",
+  projectId: "mindpowerenglish",
+  storageBucket: "mindpowerenglish.firebasestorage.app",
+  messagingSenderId: "325594660634",
+  appId: "1:325594660634:web:77295a682fa13a0767f6a3"
+};
 
-<footer>
-  © 2026 The Mind Power English Speaking Studio
-</footer>
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+
+window.registerUser = function(){
+  const email=document.getElementById("regEmail").value;
+  const pass=document.getElementById("regPassword").value;
+  createUserWithEmailAndPassword(auth,email,pass)
+    .then(()=>alert("Registered Successfully"))
+    .catch(e=>alert(e.message));
+}
+
+window.loginUser = function(){
+  const email=document.getElementById("loginEmail").value;
+  const pass=document.getElementById("loginPassword").value;
+  signInWithEmailAndPassword(auth,email,pass)
+    .then(()=>alert("Login Successful"))
+    .catch(e=>alert(e.message));
+}
+</script>
 
 </body>
 </html>
-<script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-  import { 
-    getAuth,
-    createUserWithEmailAndPassword,
-    signInWithEmailAndPassword
-  } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-
-  // 🔐 Your Firebase configuration
-  const firebaseConfig = {
-    apiKey: "AIzaSyC50hINl26vTBvxM7W7TV01MGa36kbLl_U",
-    authDomain: "mindpowerenglish.firebaseapp.com",
-    projectId: "mindpowerenglish",
-    storageBucket: "mindpowerenglish.firebasestorage.app",
-    messagingSenderId: "325594660634",
-    appId: "1:325594660634:web:77295a682fa13a0767f6a3"
-  };
-
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const auth = getAuth(app);
-
-  // ✅ REGISTER FUNCTION
-  window.registerUser = function () {
-    const email = document.getElementById("regEmail").value;
-    const password = document.getElementById("regPassword").value;
-
-    createUserWithEmailAndPassword(auth, email, password)
-      .then(() => {
-        alert("Registration successful!");
-      })
-      .catch(error => {
-        alert(error.message);
-      });
-  }
-
-  // ✅ LOGIN FUNCTION
-  window.loginUser = function () {
-    const email = document.getElementById("loginEmail").value;
-    const password = document.getElementById("loginPassword").value;
-
-    signInWithEmailAndPassword(auth, email, password)
-      .then(() => {
-        alert("Login successful!");
-      })
-      .catch(error => {
-        alert(error.message);
-      });
-  }
-</script>
-
