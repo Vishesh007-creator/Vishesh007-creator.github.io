@@ -14,7 +14,6 @@ body{
   font-family:Inter,sans-serif;
   background:#f6fbfd;
   color:#1f2933;
-  overflow-x:hidden;
 }
 
 /* NAVBAR */
@@ -43,22 +42,8 @@ body{
   text-decoration:none;
   color:#1f2933;
   font-weight:500;
-  position:relative;
 }
-.nav-links a::after{
-  content:"";
-  position:absolute;
-  left:0;
-  bottom:-6px;
-  width:0;
-  height:2px;
-  background:#c9a227;
-  transition:.3s;
-}
-.nav-links a:hover::after{width:100%}
-
 .nav-actions{display:flex;gap:14px;align-items:center}
-
 .login-btn{
   padding:8px 18px;
   border:2px solid #0f4c5c;
@@ -78,75 +63,27 @@ body{
 
 /* HERO */
 .hero{
-  position:relative;
   display:flex;
   justify-content:space-between;
   align-items:center;
   padding:90px 70px;
   background:linear-gradient(180deg,#e8f4f8,#ffffff);
-  overflow:hidden;
 }
-.shape{
-  position:absolute;
-  border-radius:50%;
-  opacity:.25;
-}
-.shape.one{
-  width:260px;height:260px;
-  background:#c9a227;
-  top:-80px;left:-80px;
-}
-.shape.two{
-  width:180px;height:180px;
-  background:#0f4c5c;
-  bottom:-60px;right:-60px;
-}
-.hero-text{
-  max-width:620px;
-  z-index:2;
-}
-.hero-text p{
-  font-size:15px;
-  margin-bottom:16px;
-  color:#475569;
-}
+.hero-text{max-width:620px}
 .hero-text h1{
   font-family:Merriweather,serif;
   font-size:44px;
-  line-height:1.25;
-  margin-bottom:18px;
   color:#0f4c5c;
 }
-.hero-text h1 span{
-  color:#c9a227;
-}
-.hero-text .sub{
-  font-size:17px;
-  margin-bottom:28px;
-  color:#334155;
-}
+.hero-text h1 span{color:#c9a227}
+.hero-text p{margin:15px 0 25px;color:#475569}
 .hero-btn{
   padding:14px 30px;
   background:#c9a227;
-  color:#1f2933;
-  font-weight:600;
   border:none;
   border-radius:10px;
   font-size:16px;
   cursor:pointer;
-  box-shadow:0 10px 24px rgba(201,162,39,.35);
-}
-.hero-image{
-  background:#ffffff;
-  padding:22px;
-  border-radius:26px;
-  box-shadow:0 30px 60px rgba(0,0,0,.15);
-  z-index:2;
-}
-.hero-image img{
-  width:300px;
-  max-width:100%;
-  border-radius:18px;
 }
 
 /* MODALS */
@@ -167,8 +104,8 @@ body{
 }
 .modal-box h2{
   font-family:Merriweather,serif;
-  margin-bottom:18px;
   color:#0f4c5c;
+  margin-bottom:18px;
 }
 .modal-box input,
 .modal-box select,
@@ -178,7 +115,6 @@ body{
   margin:10px 0;
   border-radius:8px;
   border:1px solid #cbd5e1;
-  font-family:inherit;
 }
 .modal-box button{
   width:100%;
@@ -189,20 +125,16 @@ body{
   border-radius:8px;
   margin-top:12px;
 }
+.success-msg{
+  display:none;
+  text-align:center;
+  color:green;
+  margin-top:12px;
+}
 .close{
   float:right;
   font-size:22px;
   cursor:pointer;
-}
-
-/* RESPONSIVE */
-@media(max-width:900px){
-  .hero{
-    flex-direction:column;
-    text-align:center;
-    padding:70px 28px;
-  }
-  .hero-image{margin-top:36px}
 }
 </style>
 </head>
@@ -219,140 +151,67 @@ body{
     <li><a href="#">Contact</a></li>
   </ul>
 
-  <div class="nav-actions" id="navActions">
-    <button class="login-btn" onclick="openLogin()">Login</button>
+  <div class="nav-actions">
+    <button class="login-btn">Login</button>
     <button class="enquire-btn" onclick="openDemo()">Enquire</button>
-  </div>
-
-  <div class="nav-actions" id="userActions" style="display:none;">
-    <span id="userEmail"></span>
-    <button class="enquire-btn" onclick="logoutUser()">Logout</button>
   </div>
 </header>
 
 <!-- HERO -->
 <section class="hero">
-  <div class="shape one"></div>
-  <div class="shape two"></div>
-
   <div class="hero-text">
-    <p>Since 1999 • Trusted English Education</p>
     <h1>The Mind Power <br><span>English Speaking Studio</span></h1>
-    <div class="sub">Spoken English • IELTS • Interviews • Defence Exams</div>
+    <p>Spoken English • IELTS • Interviews • Defence Exams</p>
     <button class="hero-btn" onclick="openDemo()">Book Free Demo</button>
-  </div>
-
-  <div class="hero-image">
-    <img src="mentor.png" alt="Mentor">
   </div>
 </section>
 
-<!-- LOGIN MODAL -->
-<div id="loginModal" class="modal">
-  <div class="modal-box">
-    <span class="close" onclick="closeModal()">×</span>
-    <h2>Login</h2>
-    <input id="loginEmail" type="email" placeholder="Email">
-    <input id="loginPassword" type="password" placeholder="Password">
-    <button onclick="loginUser()">Login</button>
-  </div>
-</div>
-
-<!-- REGISTER / DEMO FORM -->
+<!-- DEMO FORM MODAL -->
 <div id="demoModal" class="modal">
   <div class="modal-box">
     <span class="close" onclick="closeDemo()">×</span>
     <h2>Book Free Demo</h2>
 
-    <input id="demoName" type="text" placeholder="Full Name" required>
-    <input id="demoPhone" type="tel" placeholder="Mobile Number" required>
-    <input id="demoEmail" type="email" placeholder="Email Address">
+    <form id="demoForm" action="https://formsubmit.co/ravidapatriot72@gmail.com" method="POST">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_subject" value="New Demo Class Enquiry">
+      <input type="hidden" name="_template" value="table">
 
-    <select id="demoCourse">
-      <option value="">Select Course</option>
-      <option>Spoken English</option>
-      <option>IELTS</option>
-      <option>Interview Preparation</option>
-      <option>SSB / Defence</option>
-      <option>Other</option>
-    </select>
+      <input type="text" name="Name" placeholder="Full Name" required>
+      <input type="tel" name="Phone" placeholder="Mobile Number" required>
+      <input type="email" name="Email" placeholder="Email Address">
 
-    <textarea id="demoMessage" rows="3" placeholder="Message (optional)"></textarea>
+      <select name="Course">
+        <option value="">Select Course</option>
+        <option>Spoken English</option>
+        <option>IELTS</option>
+        <option>Interview Preparation</option>
+        <option>SSB / Defence</option>
+      </select>
 
-    <button onclick="submitDemo()">Submit Request</button>
+      <textarea name="Message" rows="3" placeholder="Message (optional)"></textarea>
+
+      <button type="submit">Submit Request</button>
+    </form>
+
+    <div class="success-msg" id="successMsg">
+      ✅ Submitted successfully!  
+      <br>We will contact you shortly.
+    </div>
+
   </div>
 </div>
 
-<!-- UI JS -->
 <script>
-function openLogin(){loginModal.style.display="flex"}
-function closeModal(){loginModal.style.display="none"}
-
-function openDemo(){demoModal.style.display="flex"}
-function closeDemo(){demoModal.style.display="none"}
-
-function submitDemo(){
-  const name = demoName.value.trim();
-  const phone = demoPhone.value.trim();
-
-  if(name==="" || phone===""){
-    alert("Please fill required fields");
-    return;
-  }
-
-  const msg =
-`Demo Class Enquiry:
-Name: ${name}
-Phone: ${phone}
-Email: ${demoEmail.value}
-Course: ${demoCourse.value}
-Message: ${demoMessage.value}`;
-
-  window.open(
-    "https://wa.me/919369296498?text="+encodeURIComponent(msg),
-    "_blank"
-  );
-
+function openDemo(){
+  demoModal.style.display="flex";
+}
+function closeDemo(){
   demoModal.style.display="none";
 }
-</script>
-
-<!-- FIREBASE AUTH -->
-<script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut }
-from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-
-const firebaseConfig={
-  apiKey:"AIzaSyC50hINl26vTBvxM7W7TV01MGa36kbLl_U",
-  authDomain:"mindpowerenglish.firebaseapp.com",
-  projectId:"mindpowerenglish",
-  storageBucket:"mindpowerenglish.firebasestorage.app",
-  messagingSenderId:"325594660634",
-  appId:"1:325594660634:web:77295a682fa13a0767f6a3"
-};
-
-const app=initializeApp(firebaseConfig);
-const auth=getAuth(app);
-
-window.loginUser=()=>{
-  signInWithEmailAndPassword(auth,loginEmail.value,loginPassword.value)
-  .then(()=>{alert("Login successful");closeModal()})
-  .catch(e=>alert(e.message));
-};
-
-onAuthStateChanged(auth,user=>{
-  if(user){
-    navActions.style.display="none";
-    userActions.style.display="flex";
-    userEmail.innerText=user.email;
-  }else{
-    navActions.style.display="flex";
-    userActions.style.display="none";
-  }
+document.getElementById("demoForm").addEventListener("submit",function(){
+  document.getElementById("successMsg").style.display="block";
 });
-
-window.logoutUser=()=>signOut(auth);
 </script>
 
 </body>
