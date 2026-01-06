@@ -35,6 +35,7 @@ body{background:#f5f7fb;color:#222}
 
 /* MEGA MENU */
 .courses-menu{position:relative}
+
 .mega-menu{
   position:absolute;
   top:40px;
@@ -46,7 +47,10 @@ body{background:#f5f7fb;color:#222}
   border-radius:14px;
   overflow:hidden;
 }
-.courses-menu:hover .mega-menu{display:flex}
+
+.courses-menu.open .mega-menu{
+  display:flex;
+}
 
 .mega-left{
   width:35%;
@@ -194,7 +198,8 @@ body{background:#f5f7fb;color:#222}
 
   <ul class="nav-links">
     <li class="courses-menu">
-      <a href="#">Courses ▾</a>
+      <a href="javascript:void(0)" id="coursesBtn">Courses ▾</a>
+
       <div class="mega-menu">
         <div class="mega-left">
           <div class="mega-item active" data-target="spoken">Spoken English</div>
@@ -282,6 +287,15 @@ function openLogin(){loginModal.style.display="flex"}
 function openRegister(){registerModal.style.display="flex"}
 function closeModal(){loginModal.style.display=registerModal.style.display="none"}
 
+/* COURSE MENU TOGGLE */
+const coursesMenu=document.querySelector(".courses-menu");
+document.getElementById("coursesBtn").addEventListener("click",(e)=>{
+  e.stopPropagation();
+  coursesMenu.classList.toggle("open");
+});
+document.addEventListener("click",()=>coursesMenu.classList.remove("open"));
+document.querySelector(".mega-menu").addEventListener("click",e=>e.stopPropagation());
+
 document.querySelectorAll(".mega-item").forEach(item=>{
   item.addEventListener("mouseenter",()=>{
     document.querySelectorAll(".mega-item").forEach(i=>i.classList.remove("active"));
@@ -297,30 +311,29 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebas
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut }
 from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
-const firebaseConfig = {
-  apiKey: "AIzaSyC50hINl26vTBvxM7W7TV01MGa36kbLl_U",
-  authDomain: "mindpowerenglish.firebaseapp.com",
-  projectId: "mindpowerenglish",
-  storageBucket: "mindpowerenglish.firebasestorage.app",
-  messagingSenderId: "325594660634",
-  appId: "1:325594660634:web:77295a682fa13a0767f6a3"
+const firebaseConfig={
+  apiKey:"AIzaSyC50hINl26vTBvxM7W7TV01MGa36kbLl_U",
+  authDomain:"mindpowerenglish.firebaseapp.com",
+  projectId:"mindpowerenglish",
+  storageBucket:"mindpowerenglish.firebasestorage.app",
+  messagingSenderId:"325594660634",
+  appId:"1:325594660634:web:77295a682fa13a0767f6a3"
 };
 
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
+const app=initializeApp(firebaseConfig);
+const auth=getAuth(app);
 
 window.registerUser=()=>{
-  const e=regEmail.value.trim(),p=regPassword.value.trim();
-  if(p.length<6){alert("Password min 6 chars");return}
-  createUserWithEmailAndPassword(auth,e,p)
+  if(regPassword.value.length<6){alert("Password min 6 chars");return}
+  createUserWithEmailAndPassword(auth,regEmail.value,regPassword.value)
   .then(()=>{alert("Registered successfully");closeModal()})
-  .catch(er=>alert(er.message));
+  .catch(e=>alert(e.message));
 };
 
 window.loginUser=()=>{
   signInWithEmailAndPassword(auth,loginEmail.value,loginPassword.value)
   .then(()=>{alert("Login successful");closeModal()})
-  .catch(er=>alert(er.message));
+  .catch(e=>alert(e.message));
 };
 
 onAuthStateChanged(auth,user=>{
