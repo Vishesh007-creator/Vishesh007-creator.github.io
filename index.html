@@ -17,7 +17,8 @@ body{background:#f5f7fb;color:#222}
   padding:15px 40px;
   background:#fff;
   box-shadow:0 4px 20px rgba(0,0,0,.08);
-  position:relative;
+  position:sticky;
+  top:0;
   z-index:1000;
 }
 .logo{font-weight:bold;font-size:18px}
@@ -31,61 +32,6 @@ body{background:#f5f7fb;color:#222}
   text-decoration:none;
   color:#333;
   font-weight:500;
-}
-
-/* MEGA MENU */
-.courses-menu{position:relative}
-
-.mega-menu{
-  position:absolute;
-  top:40px;
-  left:-200px;
-  width:760px;
-  background:#fff;
-  display:none;
-  box-shadow:0 25px 60px rgba(0,0,0,.2);
-  border-radius:14px;
-  overflow:hidden;
-}
-
-.courses-menu.open .mega-menu{
-  display:flex;
-}
-
-.mega-left{
-  width:35%;
-  background:#f4f6ff;
-  padding:20px;
-}
-.mega-item{
-  padding:12px;
-  margin-bottom:8px;
-  border-radius:8px;
-  cursor:pointer;
-  font-weight:500;
-}
-.mega-item:hover,
-.mega-item.active{
-  background:#6a5cff;
-  color:#fff;
-}
-
-.mega-right{
-  width:65%;
-  padding:20px;
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:15px;
-}
-.mega-content{display:none}
-.mega-content.active{display:contents}
-
-.mega-content span{
-  background:#fff;
-  padding:14px;
-  border-radius:10px;
-  box-shadow:0 6px 15px rgba(0,0,0,.08);
-  font-size:14px;
 }
 
 /* NAV ACTIONS */
@@ -186,70 +132,36 @@ body{background:#f5f7fb;color:#222}
 @media(max-width:900px){
   .hero{flex-direction:column;text-align:center}
   .hero-image{margin-top:30px}
-  .mega-menu{display:none!important}
 }
 </style>
 </head>
 
 <body>
 
+<!-- NAVBAR -->
 <header class="navbar">
   <div class="logo">Mind Power</div>
 
   <ul class="nav-links">
-    <li class="courses-menu">
-      <a href="javascript:void(0)" id="coursesBtn">Courses ▾</a>
-
-      <div class="mega-menu">
-        <div class="mega-left">
-          <div class="mega-item active" data-target="spoken">Spoken English</div>
-          <div class="mega-item" data-target="interview">Interview Prep</div>
-          <div class="mega-item" data-target="defence">Defence</div>
-          <div class="mega-item" data-target="language">Language Tests</div>
-          <div class="mega-item" data-target="professional">Professional</div>
-        </div>
-
-        <div class="mega-right">
-          <div class="mega-content active" id="spoken">
-            <span>Basic Certificate Course – 50 Hours</span>
-            <span>Intermediate Certificate – 45 Hours</span>
-            <span>Advance Certificate Course – 25 Hours</span>
-          </div>
-          <div class="mega-content" id="interview">
-            <span>Interview Crackers – 25 Hours</span>
-            <span>Anchoring</span>
-          </div>
-          <div class="mega-content" id="defence">
-            <span>SSB Interview</span>
-            <span>Agniveer Phase-2</span>
-          </div>
-          <div class="mega-content" id="language">
-            <span>IELTS</span>
-            <span>TOEFL</span>
-          </div>
-          <div class="mega-content" id="professional">
-            <span>Medical Representative (MR)</span>
-            <span>German Job Interview</span>
-            <span>ESTT Certificate – 450 Hours</span>
-          </div>
-        </div>
-      </div>
-    </li>
+    <li><a href="courses.html">Courses</a></li>
     <li><a href="#">About</a></li>
     <li><a href="#">Contact</a></li>
   </ul>
 
+  <!-- BEFORE LOGIN -->
   <div class="nav-actions" id="navActions">
     <button class="login-btn" onclick="openLogin()">Login</button>
     <button class="enquire-btn" onclick="openRegister()">Enquire</button>
   </div>
 
+  <!-- AFTER LOGIN -->
   <div class="nav-actions" id="userActions" style="display:none;">
     <span id="userEmail"></span>
     <button class="enquire-btn" onclick="logoutUser()">Logout</button>
   </div>
 </header>
 
+<!-- HERO -->
 <section class="hero">
   <div class="hero-text">
     <p>Since 1999 • Extraordinary Prep for an Extraordinary Future</p>
@@ -257,11 +169,13 @@ body{background:#f5f7fb;color:#222}
     <p>Spoken English • IELTS • Interviews • Defence Exams</p>
     <button class="hero-btn" onclick="openRegister()">Book Free Demo</button>
   </div>
+
   <div class="hero-image">
-    <img src="mentor.png">
+    <img src="mentor.png" alt="Mentor">
   </div>
 </section>
 
+<!-- LOGIN MODAL -->
 <div id="loginModal" class="modal">
   <div class="modal-box">
     <span class="close" onclick="closeModal()">×</span>
@@ -272,6 +186,7 @@ body{background:#f5f7fb;color:#222}
   </div>
 </div>
 
+<!-- REGISTER MODAL -->
 <div id="registerModal" class="modal">
   <div class="modal-box">
     <span class="close" onclick="closeModal()">×</span>
@@ -282,30 +197,14 @@ body{background:#f5f7fb;color:#222}
   </div>
 </div>
 
+<!-- UI JS -->
 <script>
 function openLogin(){loginModal.style.display="flex"}
 function openRegister(){registerModal.style.display="flex"}
 function closeModal(){loginModal.style.display=registerModal.style.display="none"}
-
-/* COURSE MENU TOGGLE */
-const coursesMenu=document.querySelector(".courses-menu");
-document.getElementById("coursesBtn").addEventListener("click",(e)=>{
-  e.stopPropagation();
-  coursesMenu.classList.toggle("open");
-});
-document.addEventListener("click",()=>coursesMenu.classList.remove("open"));
-document.querySelector(".mega-menu").addEventListener("click",e=>e.stopPropagation());
-
-document.querySelectorAll(".mega-item").forEach(item=>{
-  item.addEventListener("mouseenter",()=>{
-    document.querySelectorAll(".mega-item").forEach(i=>i.classList.remove("active"));
-    document.querySelectorAll(".mega-content").forEach(c=>c.classList.remove("active"));
-    item.classList.add("active");
-    document.getElementById(item.dataset.target).classList.add("active");
-  });
-});
 </script>
 
+<!-- 🔥 FIREBASE AUTH -->
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut }
