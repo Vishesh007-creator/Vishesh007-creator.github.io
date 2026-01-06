@@ -5,77 +5,171 @@
 <title>Courses | The Mind Power English Speaking Studio</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,Helvetica,sans-serif;}
-body{background:#f5f7fb;color:#222}
-
-/* HEADER */
-.header{
-  background:linear-gradient(135deg,#2b0a5f,#7a00ff);
-  color:#fff;
-  padding:50px;
-  text-align:center;
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:Inter,sans-serif;
+  background:#f6fbfd;
+  color:#1f2933;
+  overflow-x:hidden;
 }
-.header h1{font-size:42px;margin-bottom:10px}
-.header p{font-size:18px}
 
-/* COURSES */
+/* ========== HEADER ========== */
+.header{
+  position:relative;
+  padding:80px 30px;
+  background:linear-gradient(180deg,#e8f4f8,#ffffff);
+  text-align:center;
+  overflow:hidden;
+}
+.header h1{
+  font-family:Merriweather,serif;
+  font-size:42px;
+  color:#0f4c5c;
+  margin-bottom:10px;
+}
+.header p{
+  font-size:17px;
+  color:#475569;
+}
+
+/* Decorative shapes */
+.shape{
+  position:absolute;
+  border-radius:50%;
+  opacity:.25;
+}
+.shape.one{
+  width:220px;height:220px;
+  background:#c9a227;
+  top:-70px;left:-70px;
+}
+.shape.two{
+  width:160px;height:160px;
+  background:#0f4c5c;
+  bottom:-50px;right:-50px;
+}
+
+/* ========== CONTAINER ========== */
 .container{
   max-width:1100px;
-  margin:60px auto;
-  padding:0 20px;
+  margin:70px auto;
+  padding:0 24px;
 }
 
+/* Section */
 .section{
-  margin-bottom:50px;
+  margin-bottom:70px;
 }
 .section h2{
+  font-family:Merriweather,serif;
   font-size:28px;
-  margin-bottom:20px;
-  color:#6a5cff;
+  margin-bottom:22px;
+  color:#0f4c5c;
+  position:relative;
+}
+.section h2::after{
+  content:"";
+  display:block;
+  width:60px;
+  height:3px;
+  background:#c9a227;
+  margin-top:8px;
 }
 
+/* Grid */
 .course-grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:20px;
+  gap:26px;
 }
 
+/* Course Card */
 .course-card{
-  background:#fff;
-  padding:20px;
-  border-radius:14px;
-  box-shadow:0 8px 25px rgba(0,0,0,.08);
+  background:#ffffff;
+  padding:26px;
+  border-radius:18px;
+  box-shadow:0 18px 40px rgba(0,0,0,.12);
+  transition:.35s ease;
+  position:relative;
+  overflow:hidden;
+}
+.course-card:hover{
+  transform:translateY(-6px);
+}
+.course-card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(120deg,transparent,rgba(201,162,39,.18),transparent);
+  transform:translateX(-100%);
+  transition:.6s;
+}
+.course-card:hover::before{
+  transform:translateX(100%);
 }
 .course-card h3{
+  font-size:18px;
   margin-bottom:10px;
+  color:#0f4c5c;
 }
 .course-card p{
   font-size:14px;
-  color:#555;
+  color:#475569;
+  line-height:1.6;
 }
 .course-card span{
   display:inline-block;
-  margin-top:12px;
-  font-weight:bold;
-  color:#2b0a5f;
+  margin-top:14px;
+  font-weight:600;
+  color:#c9a227;
 }
 
-/* BUTTON */
-.back-btn{
+/* Buttons */
+.actions{
+  margin-top:18px;
+}
+.actions a{
   display:inline-block;
-  margin:40px auto 0;
-  padding:12px 24px;
-  background:#6a5cff;
+  margin-right:10px;
+  margin-top:8px;
+  padding:9px 16px;
+  background:#0f4c5c;
+  color:#fff;
+  text-decoration:none;
+  border-radius:8px;
+  font-size:14px;
+}
+
+/* Back */
+.back{
+  text-align:center;
+  margin:70px 0 20px;
+}
+.back a{
+  padding:14px 28px;
+  background:#0f4c5c;
   color:#fff;
   text-decoration:none;
   border-radius:10px;
-}
-.back{
-  text-align:center;
+  font-size:16px;
 }
 
-/* RESPONSIVE */
+/* Fade animation */
+.fade-up{
+  opacity:0;
+  transform:translateY(30px);
+  transition:all 1s ease;
+}
+.fade-up.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* Responsive */
 @media(max-width:600px){
   .header h1{font-size:32px}
 }
@@ -86,96 +180,104 @@ body{background:#f5f7fb;color:#222}
 
 <!-- HEADER -->
 <div class="header">
+  <div class="shape one"></div>
+  <div class="shape two"></div>
   <h1>Our Courses</h1>
-  <p>Confidence • Communication • Career Growth</p>
+  <p>Designed to build confidence, fluency & career success</p>
 </div>
 
-<!-- CONTENT -->
 <div class="container">
 
   <!-- SPOKEN ENGLISH -->
-  <div class="section">
+  <div class="section fade-up">
     <h2>Spoken English</h2>
     <div class="course-grid">
       <div class="course-card">
         <h3>Basic Certificate Course</h3>
-        <p>Foundation of English speaking and confidence.</p>
+        <p>Perfect for beginners to develop confidence and basic speaking skills.</p>
         <span>50 Hours</span>
       </div>
+
       <div class="course-card">
-        <h3>Intermediate Certificate</h3>
-        <p>Grammar + fluency + real-life communication.</p>
+        <h3>Intermediate Certificate Course</h3>
+        <p>Grammar correction, fluency improvement and real-life communication.</p>
         <span>45 Hours</span>
       </div>
+
       <div class="course-card">
         <h3>Advance Certificate Course</h3>
-        <p>Professional speaking & advanced fluency.</p>
+        <p>Professional English, advanced fluency and personality development.</p>
         <span>25 Hours</span>
       </div>
     </div>
   </div>
 
   <!-- INTERVIEW -->
-  <div class="section">
-    <h2>Interview & Personality</h2>
+  <div class="section fade-up">
+    <h2>Interview & Personality Development</h2>
     <div class="course-grid">
       <div class="course-card">
         <h3>Interview Crackers</h3>
-        <p>Job interview mastery & confidence building.</p>
+        <p>Complete interview preparation including HR rounds and confidence.</p>
         <span>25 Hours</span>
       </div>
+
       <div class="course-card">
         <h3>Anchoring</h3>
-        <p>Public speaking & stage confidence.</p>
+        <p>Public speaking, presentation skills and stage confidence training.</p>
       </div>
     </div>
   </div>
 
   <!-- DEFENCE -->
-  <div class="section">
+  <div class="section fade-up">
     <h2>Defence Exams</h2>
     <div class="course-grid">
       <div class="course-card">
         <h3>SSB Interview</h3>
-        <p>Complete SSB communication & personality prep.</p>
+        <p>Communication, psychology & personality training for SSB.</p>
       </div>
+
       <div class="course-card">
         <h3>Agniveer Phase-2</h3>
-        <p>English & interview prep for Agniveer.</p>
+        <p>English & interview preparation for Agniveer aspirants.</p>
       </div>
     </div>
   </div>
 
   <!-- LANGUAGE -->
-  <div class="section">
-    <h2>Language Tests</h2>
+  <div class="section fade-up">
+    <h2>Language Test Preparation</h2>
     <div class="course-grid">
       <div class="course-card">
         <h3>IELTS</h3>
-        <p>International English test preparation.</p>
+        <p>International English language proficiency preparation.</p>
       </div>
+
       <div class="course-card">
         <h3>TOEFL</h3>
-        <p>English proficiency for global education.</p>
+        <p>English test for global education & career opportunities.</p>
       </div>
     </div>
   </div>
 
   <!-- PROFESSIONAL -->
-  <div class="section">
+  <div class="section fade-up">
     <h2>Professional Courses</h2>
     <div class="course-grid">
       <div class="course-card">
         <h3>Medical Representative (MR)</h3>
-        <p>Communication & pharma interview training.</p>
+        <p>Professional communication and pharma interview training.</p>
       </div>
+
       <div class="course-card">
         <h3>German Job Interview</h3>
-        <p>Job interview preparation for Germany.</p>
+        <p>Interview preparation for jobs in Germany.</p>
       </div>
+
       <div class="course-card">
         <h3>ESTT Certificate Course</h3>
-        <p>Complete English speaking training.</p>
+        <p>Extensive English speaking and training programme.</p>
         <span>450 Hours</span>
       </div>
     </div>
@@ -183,10 +285,22 @@ body{background:#f5f7fb;color:#222}
 
   <!-- BACK -->
   <div class="back">
-    <a href="index.html" class="back-btn">← Back to Home</a>
+    <a href="index.html">← Back to Home</a>
   </div>
 
 </div>
 
+<!-- Animation JS -->
+<script>
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting)e.target.classList.add("show")
+  })
+},{threshold:.2});
+
+document.querySelectorAll(".fade-up").forEach(el=>observer.observe(el));
+</script>
+
 </body>
 </html>
+
