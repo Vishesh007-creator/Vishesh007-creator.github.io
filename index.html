@@ -5,212 +5,250 @@
 <title>The Mind Power English Speaking Studio</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
-:root{
-  --bg:#0b0f1a;
-  --glass:rgba(255,255,255,0.08);
-  --neon:#00f5ff;
-  --pink:#ff2fd7;
-  --text:#eaeaea;
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
 }
 
-*{margin:0;padding:0;box-sizing:border-box;}
-
 body{
-  font-family:Poppins,sans-serif;
-  background:radial-gradient(circle at top, #141a3a, #050814);
-  color:var(--text);
+  background:#f6f8fc;
+  color:#222;
+}
+
+/* NAVBAR */
+.navbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:16px 6%;
+  background:#fff;
+  box-shadow:0 2px 10px rgba(0,0,0,0.05);
+  position:sticky;
+  top:0;
+  z-index:1000;
+}
+
+.nav-left{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.nav-left img{
+  height:42px;
+}
+
+.nav-links a{
+  margin:0 12px;
+  text-decoration:none;
+  color:#333;
+  font-weight:500;
+}
+
+.nav-btn{
+  background:#5b5ce2;
+  color:#fff;
+  padding:10px 20px;
+  border-radius:8px;
+  text-decoration:none;
+  font-weight:600;
 }
 
 /* HERO */
 .hero{
-  min-height:100vh;
+  background:linear-gradient(135deg,#2b1055,#7f00ff);
+  color:#fff;
+  padding:80px 6%;
+}
+
+.hero-box{
   display:flex;
-  flex-direction:column;
-  justify-content:center;
   align-items:center;
-  text-align:center;
-  padding:40px;
-  animation:fadeIn 1.5s ease;
+  justify-content:space-between;
+  gap:40px;
+  flex-wrap:wrap;
 }
 
-.logo{
-  width:160px;
-  margin-bottom:20px;
-  animation:logoGlow 3s infinite alternate;
+.hero-text{
+  max-width:600px;
 }
 
-.hero h1{
-  font-family:Orbitron,sans-serif;
-  font-size:2.6rem;
-  background:linear-gradient(90deg,var(--neon),var(--pink));
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
+.hero-text h1{
+  font-size:44px;
+  font-weight:700;
+  margin-bottom:15px;
 }
 
-.hero p{
-  max-width:850px;
-  margin:15px auto;
-  opacity:.85;
+.hero-text h1 span{
+  color:#ffcc00;
 }
 
-.cta{
-  margin-top:30px;
-  padding:14px 36px;
-  border-radius:50px;
-  font-weight:600;
+.hero-text p{
+  font-size:18px;
+  opacity:0.9;
+  margin-bottom:25px;
+}
+
+.hero-text a{
+  display:inline-block;
+  background:#ffcc00;
+  color:#000;
+  padding:14px 28px;
+  border-radius:10px;
   text-decoration:none;
-  color:black;
-  background:linear-gradient(90deg,var(--neon),var(--pink));
-  transition:.4s;
+  font-weight:600;
 }
-.cta:hover{
-  transform:scale(1.08);
-  box-shadow:0 0 30px var(--neon);
+
+.hero-img img{
+  width:320px;
+  max-width:100%;
+  border-radius:20px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.3);
 }
 
 /* SECTION */
 section{
-  padding:90px 8%;
+  padding:80px 6%;
 }
 
-h2{
-  font-family:Orbitron;
-  font-size:2.2rem;
-  text-align:center;
+.section-title{
+  font-size:32px;
+  font-weight:700;
   margin-bottom:10px;
 }
 
-.subtitle{
-  text-align:center;
-  opacity:.6;
-  margin-bottom:60px;
+.section-sub{
+  color:#555;
+  margin-bottom:40px;
 }
 
-/* GLASS CARDS */
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:30px;
-}
-
-.card{
-  background:var(--glass);
-  backdrop-filter:blur(18px);
-  padding:30px;
-  border-radius:18px;
-  border:1px solid rgba(255,255,255,.1);
-  transition:.5s;
-}
-.card:hover{
-  transform:translateY(-12px) scale(1.03);
-  box-shadow:0 0 35px rgba(0,245,255,.25);
-}
-
-.card h3{
-  color:var(--neon);
-  margin-bottom:8px;
-}
-
-/* MENTOR SECTION */
-.mentor-box{
+/* ABOUT */
+.about{
   display:flex;
-  gap:50px;
+  gap:40px;
   align-items:center;
   flex-wrap:wrap;
 }
 
-.mentor-img{
+.about img{
   width:280px;
-  max-width:100%;
-  border-radius:25px;
-  box-shadow:0 0 30px rgba(0,245,255,.35);
+  border-radius:20px;
 }
 
-.mentor-text{
-  flex:1;
+.about-text{
+  max-width:600px;
 }
 
-.mentor-text h3{
-  font-size:1.6rem;
-  margin-bottom:12px;
-  color:var(--neon);
+/* COURSES */
+.courses{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:25px;
+}
+
+.course{
+  background:#fff;
+  padding:25px;
+  border-radius:16px;
+  box-shadow:0 6px 20px rgba(0,0,0,0.08);
+}
+
+.course h3{
+  margin-bottom:6px;
+  color:#5b5ce2;
 }
 
 /* CONTACT */
 .contact{
-  background:linear-gradient(120deg,#0f2027,#203a43,#2c5364);
-  border-radius:30px;
-  padding:70px 20px;
+  background:#5b5ce2;
+  color:#fff;
   text-align:center;
+  padding:60px 20px;
+  border-radius:20px;
+}
+
+.contact a{
+  display:inline-block;
+  margin-top:20px;
+  background:#ffcc00;
+  color:#000;
+  padding:14px 30px;
+  border-radius:10px;
+  font-weight:600;
+  text-decoration:none;
 }
 
 /* FOOTER */
 footer{
   text-align:center;
-  padding:25px;
-  opacity:.5;
+  padding:20px;
+  color:#777;
 }
 
-/* WHATSAPP */
-.whatsapp{
-  position:fixed;
-  bottom:25px;
-  right:25px;
-  background:#25D366;
-  padding:16px 18px;
-  border-radius:50%;
-  font-size:22px;
-  color:white;
-  text-decoration:none;
-  box-shadow:0 0 25px #25D366;
-}
-
-/* ANIMATION */
-@keyframes fadeIn{
-  from{opacity:0;transform:translateY(40px);}
-  to{opacity:1;transform:translateY(0);}
-}
-
-@keyframes logoGlow{
-  from{filter:drop-shadow(0 0 5px var(--neon));}
-  to{filter:drop-shadow(0 0 20px var(--pink));}
+/* RESPONSIVE */
+@media(max-width:768px){
+  .hero-text h1{font-size:34px;}
+  .nav-links{display:none;}
 }
 </style>
 </head>
 
 <body>
 
-<!-- HERO -->
-<div class="hero">
-  <img src="logo.png" class="logo" alt="TMP Logo">
-  <h1>The Mind Power English Speaking Studio</h1>
-  <p>Mr. R. P. Srivastava • 25+ Years Experience</p>
-  <p>Spoken English • IELTS • Interview • Defence & Competitive Exams</p>
-  <a href="#contact" class="cta">Book Free Demo</a>
+<!-- NAVBAR -->
+<div class="navbar">
+  <div class="nav-left">
+    <img src="logo.png" alt="TMP Logo">
+    <strong>Mind Power</strong>
+  </div>
+
+  <div class="nav-links">
+    <a href="#">Courses</a>
+    <a href="#">About</a>
+    <a href="#">Contact</a>
+  </div>
+
+  <a href="#contact" class="nav-btn">Enquire Now</a>
 </div>
 
-<!-- ABOUT MENTOR -->
-<section>
-  <h2>About The Mentor</h2>
-  <p class="subtitle">Since 1999 — A journey of confidence & success</p>
-
-  <div class="mentor-box">
-    <img src="mentor.png" alt="Mr. R. P. Srivastava" class="mentor-img">
-
-    <div class="mentor-text">
-      <h3>Mr. R. P. Srivastava</h3>
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-box">
+    <div class="hero-text">
+      <p>Since 1999 • Extraordinary Prep for an Extraordinary Future</p>
+      <h1>
+        The Mind Power <br>
+        <span>English Speaking Studio</span>
+      </h1>
       <p>
-        With more than <strong>25 years of teaching experience</strong>,
-        Mr. R. P. Srivastava has guided thousands of students to
-        master English communication and crack competitive interviews.
+        Spoken English • IELTS • Interview Preparation • Defence & Competitive Exams
       </p>
+      <a href="#contact">Book Free Demo</a>
+    </div>
+
+    <div class="hero-img">
+      <img src="mentor.png" alt="Mentor">
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section>
+  <div class="section-title">About the Mentor</div>
+  <div class="section-sub">25+ years of excellence in English training</div>
+
+  <div class="about">
+    <img src="mentor.png" alt="Mentor Photo">
+    <div class="about-text">
       <p>
-        His training covers Spoken English, IELTS, TOEFL,
-        SSB, Agniveer Phase-2, Anchoring, Medical Representative
-        interviews, and professional personality development.
+        <strong>Mr. R. P. Srivastava</strong> is a senior English trainer with
+        more than 25 years of teaching experience. He has helped thousands
+        of students gain confidence, fluency, and career success.
       </p>
     </div>
   </div>
@@ -218,36 +256,32 @@ footer{
 
 <!-- COURSES -->
 <section>
-  <h2>Programs Offered</h2>
-  <p class="subtitle">Career-oriented & certification courses</p>
+  <div class="section-title">Our Courses</div>
+  <div class="section-sub">Career-focused & certification programs</div>
 
-  <div class="grid">
-    <div class="card"><h3>Basic Certificate</h3><p>50 Hours</p></div>
-    <div class="card"><h3>Intermediate Certificate</h3><p>45 Hours</p></div>
-    <div class="card"><h3>Advance Certificate</h3><p>25 Hours</p></div>
-    <div class="card"><h3>Interview Crackers</h3><p>25 Hours</p></div>
-    <div class="card"><h3>ESTT Program</h3><p>450 Hours</p></div>
-    <div class="card"><h3>IELTS • TOEFL • SSB • Agniveer</h3></div>
+  <div class="courses">
+    <div class="course"><h3>Basic Certificate</h3><p>50 Hours</p></div>
+    <div class="course"><h3>Intermediate Certificate</h3><p>45 Hours</p></div>
+    <div class="course"><h3>Advance Certificate</h3><p>25 Hours</p></div>
+    <div class="course"><h3>Interview Crackers</h3><p>25 Hours</p></div>
+    <div class="course"><h3>IELTS / TOEFL</h3></div>
+    <div class="course"><h3>SSB / Agniveer</h3></div>
   </div>
 </section>
 
 <!-- CONTACT -->
 <section id="contact">
   <div class="contact">
-    <h2>Free Demo & Enquiry</h2>
-    <p>📞 WhatsApp: +91 93692 96498</p>
+    <h2>Contact for Free Demo</h2>
+    <p>📞 +91 93692 96498</p>
     <p>📧 ravidapatriot72@gmail.com</p>
-    <a href="https://wa.me/919369296498" class="cta" target="_blank">
-      Message on WhatsApp
-    </a>
+    <a href="https://wa.me/919369296498">WhatsApp Now</a>
   </div>
 </section>
 
 <footer>
   © 2026 The Mind Power English Speaking Studio
 </footer>
-
-<a class="whatsapp" href="https://wa.me/919369296498" target="_blank">💬</a>
 
 </body>
 </html>
