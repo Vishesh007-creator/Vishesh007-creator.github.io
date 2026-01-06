@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>English Academy | R.P. Srivastava</title>
+<title>The Mind Power English Speaking Studio</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
@@ -22,7 +22,6 @@ body{
   font-family:Poppins,sans-serif;
   background:radial-gradient(circle at top, #141a3a, #050814);
   color:var(--text);
-  overflow-x:hidden;
 }
 
 /* HERO */
@@ -37,16 +36,22 @@ body{
   animation:fadeIn 1.5s ease;
 }
 
+.logo{
+  width:160px;
+  margin-bottom:20px;
+  animation:logoGlow 3s infinite alternate;
+}
+
 .hero h1{
   font-family:Orbitron,sans-serif;
-  font-size:3.2rem;
+  font-size:2.6rem;
   background:linear-gradient(90deg,var(--neon),var(--pink));
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
 }
 
 .hero p{
-  max-width:800px;
+  max-width:850px;
   margin:15px auto;
   opacity:.85;
 }
@@ -117,17 +122,6 @@ h2{
   text-align:center;
 }
 
-.contact a{
-  display:inline-block;
-  margin-top:25px;
-  padding:14px 36px;
-  background:linear-gradient(90deg,var(--pink),var(--neon));
-  color:black;
-  border-radius:50px;
-  text-decoration:none;
-  font-weight:600;
-}
-
 /* FOOTER */
 footer{
   text-align:center;
@@ -154,13 +148,19 @@ footer{
   from{opacity:0;transform:translateY(40px);}
   to{opacity:1;transform:translateY(0);}
 }
+
+@keyframes logoGlow{
+  from{filter:drop-shadow(0 0 5px var(--neon));}
+  to{filter:drop-shadow(0 0 20px var(--pink));}
+}
 </style>
 </head>
 
 <body>
 
 <div class="hero">
-  <h1>ENGLISH ACADEMY</h1>
+  <img src="logo.png" alt="The Mind Power Logo" class="logo">
+  <h1>The Mind Power English Speaking Studio</h1>
   <p>Mr. R. P. Srivastava • 25+ Years Experience</p>
   <p>Spoken English • IELTS • Interview • Defence & Competitive Exams</p>
   <a href="#contact" class="cta">Book Free Demo</a>
@@ -168,29 +168,29 @@ footer{
 
 <section>
   <h2>About The Mentor</h2>
-  <p class="subtitle">Experience meets modern training</p>
+  <p class="subtitle">Since 1999 — A legacy of confidence & communication</p>
   <div class="grid">
     <div class="card">
       <h3>25+ Years Expertise</h3>
-      <p>Training students, professionals & defence aspirants with real-world English skills.</p>
+      <p>Helping students, professionals & defence aspirants master English.</p>
     </div>
     <div class="card">
-      <h3>Result Oriented</h3>
-      <p>Focus on confidence, fluency, interviews & international exams.</p>
+      <h3>Result Oriented Training</h3>
+      <p>Focus on fluency, interviews, exams & personality development.</p>
     </div>
   </div>
 </section>
 
 <section>
   <h2>Programs</h2>
-  <p class="subtitle">Structured & certification based</p>
+  <p class="subtitle">Certification & career-oriented courses</p>
   <div class="grid">
     <div class="card"><h3>Basic Certificate</h3><p>50 Hours</p></div>
     <div class="card"><h3>Intermediate Certificate</h3><p>45 Hours</p></div>
     <div class="card"><h3>Advance Certificate</h3><p>25 Hours</p></div>
     <div class="card"><h3>Interview Crackers</h3><p>25 Hours</p></div>
     <div class="card"><h3>ESTT Program</h3><p>450 Hours</p></div>
-    <div class="card"><h3>IELTS / TOEFL / SSB / Agniveer</h3></div>
+    <div class="card"><h3>IELTS • TOEFL • SSB • Agniveer</h3></div>
   </div>
 </section>
 
@@ -199,12 +199,12 @@ footer{
     <h2>Free Demo & Enquiry</h2>
     <p>📞 WhatsApp: +91 93692 96498</p>
     <p>📧 ravidapatriot72@gmail.com</p>
-    <a href="https://wa.me/919369296498" target="_blank">Message on WhatsApp</a>
+    <a href="https://wa.me/919369296498" class="cta" target="_blank">Message on WhatsApp</a>
   </div>
 </section>
 
 <footer>
-  © 2026 English Academy | Mr. R. P. Srivastava
+  © 2026 The Mind Power English Speaking Studio
 </footer>
 
 <a class="whatsapp" href="https://wa.me/919369296498" target="_blank">💬</a>
