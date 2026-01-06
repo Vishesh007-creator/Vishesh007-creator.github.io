@@ -26,7 +26,6 @@ body{
   box-shadow:0 6px 24px rgba(0,0,0,.06);
   position:sticky;
   top:0;
-  z-index:1000;
 }
 .logo{
   font-size:20px;
@@ -43,9 +42,10 @@ body{
   color:#1f2933;
   font-weight:500;
 }
-.nav-actions{display:flex;gap:14px;align-items:center}
-.login-btn{
-  padding:8px 18px;
+.nav-actions{display:flex;gap:12px}
+
+.login-btn,.register-btn{
+  padding:8px 16px;
   border:2px solid #0f4c5c;
   background:transparent;
   color:#0f4c5c;
@@ -63,20 +63,16 @@ body{
 
 /* HERO */
 .hero{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
   padding:90px 70px;
   background:linear-gradient(180deg,#e8f4f8,#ffffff);
 }
-.hero-text{max-width:620px}
-.hero-text h1{
+.hero h1{
   font-family:Merriweather,serif;
   font-size:44px;
   color:#0f4c5c;
 }
-.hero-text h1 span{color:#c9a227}
-.hero-text p{margin:15px 0 25px;color:#475569}
+.hero h1 span{color:#c9a227}
+.hero p{margin:15px 0 25px}
 .hero-btn{
   padding:14px 30px;
   background:#c9a227;
@@ -94,7 +90,6 @@ body{
   background:rgba(0,0,0,.55);
   justify-content:center;
   align-items:center;
-  z-index:2000;
 }
 .modal-box{
   background:#fff;
@@ -105,7 +100,6 @@ body{
 .modal-box h2{
   font-family:Merriweather,serif;
   color:#0f4c5c;
-  margin-bottom:18px;
 }
 .modal-box input,
 .modal-box select,
@@ -125,16 +119,16 @@ body{
   border-radius:8px;
   margin-top:12px;
 }
-.success-msg{
-  display:none;
-  text-align:center;
-  color:green;
-  margin-top:12px;
-}
 .close{
   float:right;
   font-size:22px;
   cursor:pointer;
+}
+.success-msg{
+  display:none;
+  text-align:center;
+  color:green;
+  margin-top:10px;
 }
 </style>
 </head>
@@ -152,37 +146,56 @@ body{
   </ul>
 
   <div class="nav-actions">
-    <button class="login-btn">Login</button>
-    <button class="enquire-btn" onclick="openDemo()">Enquire</button>
+    <button class="login-btn" onclick="openLogin()">Login</button>
+    <button class="register-btn" onclick="openRegister()">Register</button>
+    <button class="enquire-btn" onclick="openDemo()">Book Free Demo</button>
   </div>
 </header>
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-text">
-    <h1>The Mind Power <br><span>English Speaking Studio</span></h1>
-    <p>Spoken English • IELTS • Interviews • Defence Exams</p>
-    <button class="hero-btn" onclick="openDemo()">Book Free Demo</button>
-  </div>
+  <h1>The Mind Power <br><span>English Speaking Studio</span></h1>
+  <p>Spoken English • IELTS • Interviews • Defence Exams</p>
+  <button class="hero-btn" onclick="openDemo()">Book Free Demo</button>
 </section>
+
+<!-- LOGIN MODAL -->
+<div id="loginModal" class="modal">
+  <div class="modal-box">
+    <span class="close" onclick="closeAll()">×</span>
+    <h2>Login</h2>
+    <input id="loginEmail" type="email" placeholder="Email">
+    <input id="loginPassword" type="password" placeholder="Password">
+    <button onclick="loginUser()">Login</button>
+  </div>
+</div>
+
+<!-- REGISTER MODAL -->
+<div id="registerModal" class="modal">
+  <div class="modal-box">
+    <span class="close" onclick="closeAll()">×</span>
+    <h2>Register</h2>
+    <input id="regEmail" type="email" placeholder="Email">
+    <input id="regPassword" type="password" placeholder="Password (min 6)">
+    <button onclick="registerUser()">Create Account</button>
+  </div>
+</div>
 
 <!-- DEMO FORM MODAL -->
 <div id="demoModal" class="modal">
   <div class="modal-box">
-    <span class="close" onclick="closeDemo()">×</span>
+    <span class="close" onclick="closeAll()">×</span>
     <h2>Book Free Demo</h2>
 
     <form id="demoForm" action="https://formsubmit.co/ravidapatriot72@gmail.com" method="POST">
       <input type="hidden" name="_captcha" value="false">
       <input type="hidden" name="_subject" value="New Demo Class Enquiry">
-      <input type="hidden" name="_template" value="table">
 
       <input type="text" name="Name" placeholder="Full Name" required>
       <input type="tel" name="Phone" placeholder="Mobile Number" required>
       <input type="email" name="Email" placeholder="Email Address">
 
       <select name="Course">
-        <option value="">Select Course</option>
         <option>Spoken English</option>
         <option>IELTS</option>
         <option>Interview Preparation</option>
@@ -190,28 +203,58 @@ body{
       </select>
 
       <textarea name="Message" rows="3" placeholder="Message (optional)"></textarea>
-
-      <button type="submit">Submit Request</button>
+      <button type="submit">Submit</button>
     </form>
 
     <div class="success-msg" id="successMsg">
-      ✅ Submitted successfully!  
-      <br>We will contact you shortly.
+      ✅ Submitted Successfully. We will contact you.
     </div>
-
   </div>
 </div>
 
 <script>
-function openDemo(){
-  demoModal.style.display="flex";
-}
-function closeDemo(){
+function openLogin(){closeAll();loginModal.style.display="flex";}
+function openRegister(){closeAll();registerModal.style.display="flex";}
+function openDemo(){closeAll();demoModal.style.display="flex";}
+function closeAll(){
+  loginModal.style.display="none";
+  registerModal.style.display="none";
   demoModal.style.display="none";
 }
-document.getElementById("demoForm").addEventListener("submit",function(){
+
+document.getElementById("demoForm").addEventListener("submit",()=>{
   document.getElementById("successMsg").style.display="block";
 });
+</script>
+
+<!-- FIREBASE AUTH -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword }
+from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+const firebaseConfig={
+  apiKey:"AIzaSyC50hINl26vTBvxM7W7TV01MGa36kbLl_U",
+  authDomain:"mindpowerenglish.firebaseapp.com",
+  projectId:"mindpowerenglish",
+  messagingSenderId:"325594660634",
+  appId:"1:325594660634:web:77295a682fa13a0767f6a3"
+};
+
+const app=initializeApp(firebaseConfig);
+const auth=getAuth(app);
+
+window.registerUser=()=>{
+  createUserWithEmailAndPassword(auth,regEmail.value,regPassword.value)
+  .then(()=>alert("Account created successfully"))
+  .catch(e=>alert(e.message));
+};
+
+window.loginUser=()=>{
+  signInWithEmailAndPassword(auth,loginEmail.value,loginPassword.value)
+  .then(()=>alert("Login successful"))
+  .catch(e=>alert(e.message));
+};
 </script>
 
 </body>
