@@ -5,131 +5,76 @@
 <title>The Mind Power English Speaking Studio</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{
-  font-family:Inter,sans-serif;
-  background:#f6fbfd;
-  color:#1f2933;
-}
+body{font-family:Inter,sans-serif;background:#f6fbfd;color:#1f2933}
 
 /* NAVBAR */
 .navbar{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:16px 48px;
-  background:#ffffff;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:16px 48px;background:#fff;
   box-shadow:0 6px 24px rgba(0,0,0,.06);
-  position:sticky;
-  top:0;
 }
-.logo{
-  font-size:20px;
-  font-weight:600;
-  color:#0f4c5c;
-}
-.nav-links{
-  list-style:none;
-  display:flex;
-  gap:32px;
-}
-.nav-links a{
-  text-decoration:none;
-  color:#1f2933;
-  font-weight:500;
-}
+.logo{font-size:20px;font-weight:600;color:#0f4c5c}
+.nav-links{list-style:none;display:flex;gap:32px}
+.nav-links a{text-decoration:none;color:#1f2933;font-weight:500}
 .nav-actions{display:flex;gap:12px}
-
 .login-btn,.register-btn{
-  padding:8px 16px;
-  border:2px solid #0f4c5c;
-  background:transparent;
-  color:#0f4c5c;
-  border-radius:8px;
-  cursor:pointer;
+  padding:8px 16px;border:2px solid #0f4c5c;
+  background:transparent;color:#0f4c5c;
+  border-radius:8px;cursor:pointer
 }
 .enquire-btn{
-  padding:9px 22px;
-  background:#0f4c5c;
-  color:#fff;
-  border:none;
-  border-radius:8px;
-  cursor:pointer;
+  padding:9px 22px;background:#0f4c5c;color:#fff;
+  border:none;border-radius:8px;cursor:pointer
 }
 
 /* HERO */
 .hero{
   padding:90px 70px;
-  background:linear-gradient(180deg,#e8f4f8,#ffffff);
+  background:linear-gradient(180deg,#e8f4f8,#ffffff)
 }
 .hero h1{
   font-family:Merriweather,serif;
-  font-size:44px;
-  color:#0f4c5c;
+  font-size:44px;color:#0f4c5c
 }
 .hero h1 span{color:#c9a227}
 .hero p{margin:15px 0 25px}
 .hero-btn{
-  padding:14px 30px;
-  background:#c9a227;
-  border:none;
-  border-radius:10px;
-  font-size:16px;
-  cursor:pointer;
+  padding:14px 30px;background:#c9a227;
+  border:none;border-radius:10px;font-size:16px;cursor:pointer
 }
 
 /* MODALS */
 .modal{
-  display:none;
-  position:fixed;
-  inset:0;
+  display:none;position:fixed;inset:0;
   background:rgba(0,0,0,.55);
-  justify-content:center;
-  align-items:center;
+  justify-content:center;align-items:center;
+  z-index:2000
 }
 .modal-box{
-  background:#fff;
-  padding:32px;
-  width:340px;
-  border-radius:16px;
+  background:#fff;padding:32px;
+  width:340px;border-radius:16px
 }
 .modal-box h2{
   font-family:Merriweather,serif;
-  color:#0f4c5c;
+  color:#0f4c5c;margin-bottom:14px
 }
 .modal-box input,
 .modal-box select,
 .modal-box textarea{
-  width:100%;
-  padding:11px;
-  margin:10px 0;
-  border-radius:8px;
-  border:1px solid #cbd5e1;
+  width:100%;padding:11px;margin:10px 0;
+  border-radius:8px;border:1px solid #cbd5e1
 }
 .modal-box button{
-  width:100%;
-  padding:13px;
-  background:#0f4c5c;
-  color:#fff;
-  border:none;
-  border-radius:8px;
-  margin-top:12px;
+  width:100%;padding:13px;
+  background:#0f4c5c;color:#fff;
+  border:none;border-radius:8px;margin-top:12px
 }
-.close{
-  float:right;
-  font-size:22px;
-  cursor:pointer;
-}
-.success-msg{
-  display:none;
-  text-align:center;
-  color:green;
-  margin-top:10px;
-}
+.close{float:right;font-size:22px;cursor:pointer}
+.success-msg{display:none;color:green;text-align:center;margin-top:10px}
 </style>
 </head>
 
@@ -138,13 +83,11 @@ body{
 <!-- NAVBAR -->
 <header class="navbar">
   <div class="logo">Mind Power</div>
-
   <ul class="nav-links">
     <li><a href="courses.html">Courses</a></li>
     <li><a href="#">About</a></li>
     <li><a href="#">Contact</a></li>
   </ul>
-
   <div class="nav-actions">
     <button class="login-btn" onclick="openLogin()">Login</button>
     <button class="register-btn" onclick="openRegister()">Register</button>
@@ -159,7 +102,7 @@ body{
   <button class="hero-btn" onclick="openDemo()">Book Free Demo</button>
 </section>
 
-<!-- LOGIN MODAL -->
+<!-- LOGIN -->
 <div id="loginModal" class="modal">
   <div class="modal-box">
     <span class="close" onclick="closeAll()">×</span>
@@ -170,24 +113,27 @@ body{
   </div>
 </div>
 
-<!-- REGISTER MODAL -->
+<!-- REGISTER -->
 <div id="registerModal" class="modal">
   <div class="modal-box">
     <span class="close" onclick="closeAll()">×</span>
     <h2>Register</h2>
     <input id="regEmail" type="email" placeholder="Email">
-    <input id="regPassword" type="password" placeholder="Password (min 6)">
+    <input id="regPassword" type="password" placeholder="Password (min 6 chars)">
     <button onclick="registerUser()">Create Account</button>
   </div>
 </div>
 
-<!-- DEMO FORM MODAL -->
+<!-- DEMO FORM -->
 <div id="demoModal" class="modal">
   <div class="modal-box">
     <span class="close" onclick="closeAll()">×</span>
     <h2>Book Free Demo</h2>
 
-    <form id="demoForm" action="https://formsubmit.co/ravidapatriot72@gmail.com" method="POST">
+    <form id="demoForm"
+      action="https://formsubmit.co/ravidapatriot72@gmail.com"
+      method="POST">
+
       <input type="hidden" name="_captcha" value="false">
       <input type="hidden" name="_subject" value="New Demo Class Enquiry">
 
@@ -207,7 +153,7 @@ body{
     </form>
 
     <div class="success-msg" id="successMsg">
-      ✅ Submitted Successfully. We will contact you.
+      ✅ Submitted successfully. We will contact you.
     </div>
   </div>
 </div>
@@ -221,40 +167,64 @@ function closeAll(){
   registerModal.style.display="none";
   demoModal.style.display="none";
 }
-
 document.getElementById("demoForm").addEventListener("submit",()=>{
   document.getElementById("successMsg").style.display="block";
 });
 </script>
 
-<!-- FIREBASE AUTH -->
+<!-- FIREBASE AUTH (FIXED & WORKING) -->
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword }
-from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
 const firebaseConfig={
   apiKey:"AIzaSyC50hINl26vTBvxM7W7TV01MGa36kbLl_U",
   authDomain:"mindpowerenglish.firebaseapp.com",
   projectId:"mindpowerenglish",
-  messagingSenderId:"325594660634",
   appId:"1:325594660634:web:77295a682fa13a0767f6a3"
 };
 
 const app=initializeApp(firebaseConfig);
 const auth=getAuth(app);
 
+/* REGISTER – THIS WILL CREATE ID */
 window.registerUser=()=>{
-  createUserWithEmailAndPassword(auth,regEmail.value,regPassword.value)
-  .then(()=>alert("Account created successfully"))
-  .catch(e=>alert(e.message));
+  const email=regEmail.value.trim();
+  const password=regPassword.value.trim();
+
+  if(email===""||password===""){
+    alert("Fill all fields"); return;
+  }
+  if(password.length<6){
+    alert("Password must be at least 6 characters"); return;
+  }
+
+  createUserWithEmailAndPassword(auth,email,password)
+  .then(()=>{
+    alert("✅ Account created successfully");
+    closeAll();
+  })
+  .catch(err=>alert("❌ "+err.message));
 };
 
+/* LOGIN */
 window.loginUser=()=>{
   signInWithEmailAndPassword(auth,loginEmail.value,loginPassword.value)
-  .then(()=>alert("Login successful"))
-  .catch(e=>alert(e.message));
+  .then(()=>{alert("Login successful");closeAll();})
+  .catch(err=>alert("❌ "+err.message));
 };
+
+/* AUTH STATE (DEBUG) */
+onAuthStateChanged(auth,user=>{
+  if(user){
+    console.log("Logged in as:",user.email);
+  }
+});
 </script>
 
 </body>
