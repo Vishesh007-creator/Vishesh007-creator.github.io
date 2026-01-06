@@ -114,6 +114,31 @@ h2{
   margin-bottom:8px;
 }
 
+/* MENTOR SECTION */
+.mentor-box{
+  display:flex;
+  gap:50px;
+  align-items:center;
+  flex-wrap:wrap;
+}
+
+.mentor-img{
+  width:280px;
+  max-width:100%;
+  border-radius:25px;
+  box-shadow:0 0 30px rgba(0,245,255,.35);
+}
+
+.mentor-text{
+  flex:1;
+}
+
+.mentor-text h3{
+  font-size:1.6rem;
+  margin-bottom:12px;
+  color:var(--neon);
+}
+
 /* CONTACT */
 .contact{
   background:linear-gradient(120deg,#0f2027,#203a43,#2c5364);
@@ -158,32 +183,44 @@ footer{
 
 <body>
 
+<!-- HERO -->
 <div class="hero">
-  <img src="logo.png" alt="The Mind Power Logo" class="logo">
+  <img src="logo.png" class="logo" alt="TMP Logo">
   <h1>The Mind Power English Speaking Studio</h1>
   <p>Mr. R. P. Srivastava • 25+ Years Experience</p>
   <p>Spoken English • IELTS • Interview • Defence & Competitive Exams</p>
   <a href="#contact" class="cta">Book Free Demo</a>
 </div>
 
+<!-- ABOUT MENTOR -->
 <section>
   <h2>About The Mentor</h2>
-  <p class="subtitle">Since 1999 — A legacy of confidence & communication</p>
-  <div class="grid">
-    <div class="card">
-      <h3>25+ Years Expertise</h3>
-      <p>Helping students, professionals & defence aspirants master English.</p>
-    </div>
-    <div class="card">
-      <h3>Result Oriented Training</h3>
-      <p>Focus on fluency, interviews, exams & personality development.</p>
+  <p class="subtitle">Since 1999 — A journey of confidence & success</p>
+
+  <div class="mentor-box">
+    <img src="mentor.png" alt="Mr. R. P. Srivastava" class="mentor-img">
+
+    <div class="mentor-text">
+      <h3>Mr. R. P. Srivastava</h3>
+      <p>
+        With more than <strong>25 years of teaching experience</strong>,
+        Mr. R. P. Srivastava has guided thousands of students to
+        master English communication and crack competitive interviews.
+      </p>
+      <p>
+        His training covers Spoken English, IELTS, TOEFL,
+        SSB, Agniveer Phase-2, Anchoring, Medical Representative
+        interviews, and professional personality development.
+      </p>
     </div>
   </div>
 </section>
 
+<!-- COURSES -->
 <section>
-  <h2>Programs</h2>
-  <p class="subtitle">Certification & career-oriented courses</p>
+  <h2>Programs Offered</h2>
+  <p class="subtitle">Career-oriented & certification courses</p>
+
   <div class="grid">
     <div class="card"><h3>Basic Certificate</h3><p>50 Hours</p></div>
     <div class="card"><h3>Intermediate Certificate</h3><p>45 Hours</p></div>
@@ -194,12 +231,15 @@ footer{
   </div>
 </section>
 
+<!-- CONTACT -->
 <section id="contact">
   <div class="contact">
     <h2>Free Demo & Enquiry</h2>
     <p>📞 WhatsApp: +91 93692 96498</p>
     <p>📧 ravidapatriot72@gmail.com</p>
-    <a href="https://wa.me/919369296498" class="cta" target="_blank">Message on WhatsApp</a>
+    <a href="https://wa.me/919369296498" class="cta" target="_blank">
+      Message on WhatsApp
+    </a>
   </div>
 </section>
 
