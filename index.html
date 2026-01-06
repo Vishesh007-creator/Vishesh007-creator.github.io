@@ -17,10 +17,84 @@ body{background:#f5f7fb;color:#222}
   padding:15px 40px;
   background:#fff;
   box-shadow:0 4px 20px rgba(0,0,0,.08);
+  position:relative;
+  z-index:1000;
 }
+
 .logo{font-weight:bold;font-size:18px}
-.nav-links{list-style:none;display:flex;gap:25px}
-.nav-links a{text-decoration:none;color:#333;font-weight:500}
+
+.nav-links{
+  list-style:none;
+  display:flex;
+  gap:30px;
+}
+
+.nav-links a{
+  text-decoration:none;
+  color:#333;
+  font-weight:500;
+}
+
+/* MEGA MENU */
+.courses-menu{position:relative}
+
+.mega-menu{
+  position:absolute;
+  top:40px;
+  left:-200px;
+  width:760px;
+  background:#fff;
+  display:none;
+  box-shadow:0 25px 60px rgba(0,0,0,.2);
+  border-radius:14px;
+  overflow:hidden;
+}
+
+.courses-menu:hover .mega-menu{
+  display:flex;
+}
+
+.mega-left{
+  width:35%;
+  background:#f4f6ff;
+  padding:20px;
+}
+
+.mega-item{
+  padding:12px;
+  margin-bottom:8px;
+  border-radius:8px;
+  cursor:pointer;
+  font-weight:500;
+}
+
+.mega-item:hover,
+.mega-item.active{
+  background:#6a5cff;
+  color:#fff;
+}
+
+.mega-right{
+  width:65%;
+  padding:20px;
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:15px;
+}
+
+.mega-content{display:none}
+
+.mega-content.active{display:contents}
+
+.mega-content span{
+  background:#fff;
+  padding:14px;
+  border-radius:10px;
+  box-shadow:0 6px 15px rgba(0,0,0,.08);
+  font-size:14px;
+}
+
+/* NAV ACTIONS */
 .nav-actions{display:flex;gap:12px;align-items:center}
 
 .login-btn{
@@ -31,6 +105,7 @@ body{background:#f5f7fb;color:#222}
   border-radius:8px;
   cursor:pointer;
 }
+
 .enquire-btn{
   padding:8px 18px;
   background:#6a5cff;
@@ -49,10 +124,12 @@ body{background:#f5f7fb;color:#222}
   background:linear-gradient(135deg,#2b0a5f,#7a00ff);
   color:#fff;
 }
+
 .hero-text{max-width:600px}
 .hero-text h1{font-size:46px;margin-bottom:15px}
 .hero-text h1 span{color:#ffd400}
 .hero-text p{font-size:18px;margin-bottom:25px}
+
 .hero-btn{
   padding:14px 26px;
   background:#ffd400;
@@ -61,13 +138,14 @@ body{background:#f5f7fb;color:#222}
   font-size:16px;
   cursor:pointer;
 }
+
 .hero-image{
   background:#fff;
   padding:20px;
   border-radius:24px;
 }
 .hero-image img{
-  width:340px;
+  width:320px;
   max-width:100%;
   border-radius:18px;
 }
@@ -105,7 +183,6 @@ body{background:#f5f7fb;color:#222}
   border:none;
   border-radius:8px;
   margin-top:10px;
-  cursor:pointer;
 }
 .close{
   position:absolute;
@@ -119,6 +196,7 @@ body{background:#f5f7fb;color:#222}
 @media(max-width:900px){
   .hero{flex-direction:column;text-align:center}
   .hero-image{margin-top:30px}
+  .mega-menu{display:none!important}
 }
 </style>
 </head>
@@ -130,7 +208,50 @@ body{background:#f5f7fb;color:#222}
   <div class="logo">Mind Power</div>
 
   <ul class="nav-links">
-    <li><a href="#">Courses</a></li>
+    <li class="courses-menu">
+      <a href="#">Courses ▾</a>
+
+      <div class="mega-menu">
+        <div class="mega-left">
+          <div class="mega-item active" data-target="spoken">Spoken English</div>
+          <div class="mega-item" data-target="interview">Interview Prep</div>
+          <div class="mega-item" data-target="defence">Defence</div>
+          <div class="mega-item" data-target="language">Language Tests</div>
+          <div class="mega-item" data-target="professional">Professional</div>
+        </div>
+
+        <div class="mega-right">
+          <div class="mega-content active" id="spoken">
+            <span>Basic Certificate Course – 50 Hours</span>
+            <span>Intermediate Certificate – 45 Hours</span>
+            <span>Advance Certificate Course – 25 Hours</span>
+          </div>
+
+          <div class="mega-content" id="interview">
+            <span>Interview Crackers – 25 Hours</span>
+            <span>Anchoring</span>
+            <span>Personality Development</span>
+          </div>
+
+          <div class="mega-content" id="defence">
+            <span>SSB Interview</span>
+            <span>Agniveer Phase-2</span>
+          </div>
+
+          <div class="mega-content" id="language">
+            <span>IELTS</span>
+            <span>TOEFL</span>
+          </div>
+
+          <div class="mega-content" id="professional">
+            <span>Medical Representative (MR)</span>
+            <span>German Job Interview</span>
+            <span>ESTT Certificate Course – 450 Hours</span>
+          </div>
+        </div>
+      </div>
+    </li>
+
     <li><a href="#">About</a></li>
     <li><a href="#">Contact</a></li>
   </ul>
@@ -162,7 +283,7 @@ body{background:#f5f7fb;color:#222}
   </div>
 </section>
 
-<!-- LOGIN MODAL -->
+<!-- LOGIN -->
 <div id="loginModal" class="modal">
   <div class="modal-box">
     <span class="close" onclick="closeModal()">×</span>
@@ -173,99 +294,28 @@ body{background:#f5f7fb;color:#222}
   </div>
 </div>
 
-<!-- REGISTER MODAL -->
+<!-- REGISTER -->
 <div id="registerModal" class="modal">
   <div class="modal-box">
     <span class="close" onclick="closeModal()">×</span>
     <h2>Register</h2>
     <input id="regEmail" type="email" placeholder="Email">
-    <input id="regPassword" type="password" placeholder="Password (min 6 chars)">
+    <input id="regPassword" type="password" placeholder="Password (min 6)">
     <button onclick="registerUser()">Register</button>
   </div>
 </div>
 
 <!-- UI JS -->
 <script>
-function openLogin(){document.getElementById("loginModal").style.display="flex";}
-function openRegister(){document.getElementById("registerModal").style.display="flex";}
-function closeModal(){
-  document.getElementById("loginModal").style.display="none";
-  document.getElementById("registerModal").style.display="none";
-}
-</script>
+function openLogin(){loginModal.style.display="flex"}
+function openRegister(){registerModal.style.display="flex"}
+function closeModal(){loginModal.style.display=registerModal.style.display="none"}
 
-<!-- 🔥 FIREBASE AUTH -->
-<script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-import { 
-  getAuth,
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  onAuthStateChanged,
-  signOut
-} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-
-/* YOUR FIREBASE CONFIG */
-const firebaseConfig = {
-  apiKey: "AIzaSyC50hINl26vTBvxM7W7TV01MGa36kbLl_U",
-  authDomain: "mindpowerenglish.firebaseapp.com",
-  projectId: "mindpowerenglish",
-  storageBucket: "mindpowerenglish.firebasestorage.app",
-  messagingSenderId: "325594660634",
-  appId: "1:325594660634:web:77295a682fa13a0767f6a3"
-};
-
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-
-/* REGISTER */
-window.registerUser = function(){
-  const email=document.getElementById("regEmail").value.trim();
-  const pass=document.getElementById("regPassword").value.trim();
-
-  if(email===""||pass===""){alert("Fill all fields");return;}
-  if(pass.length<6){alert("Password must be 6+ characters");return;}
-
-  createUserWithEmailAndPassword(auth,email,pass)
-    .then(()=>{
-      alert("Registration successful! Now login.");
-      closeModal();
-    })
-    .catch(e=>alert(e.message));
-}
-
-/* LOGIN */
-window.loginUser = function(){
-  const email=document.getElementById("loginEmail").value.trim();
-  const pass=document.getElementById("loginPassword").value.trim();
-
-  if(email===""||pass===""){alert("Fill all fields");return;}
-
-  signInWithEmailAndPassword(auth,email,pass)
-    .then(()=>{
-      alert("Login successful!");
-      closeModal();
-    })
-    .catch(e=>alert(e.message));
-}
-
-/* AUTH STATE (SHOW USER) */
-onAuthStateChanged(auth,(user)=>{
-  if(user){
-    document.getElementById("navActions").style.display="none";
-    document.getElementById("userActions").style.display="flex";
-    document.getElementById("userEmail").innerText=user.email;
-  }else{
-    document.getElementById("navActions").style.display="flex";
-    document.getElementById("userActions").style.display="none";
-  }
+document.querySelectorAll(".mega-item").forEach(item=>{
+  item.addEventListener("mouseenter",()=>{
+    document.querySelectorAll(".mega-item").forEach(i=>i.classList.remove("active"));
+    document.querySelectorAll(".mega-content").forEach(c=>c.classList.remove("active"));
+    item.classList.add("active");
+    document.getElementById(item.dataset.target).classList.add("active");
+  });
 });
-
-/* LOGOUT */
-window.logoutUser=function(){
-  signOut(auth).then(()=>alert("Logged out"));
-}
-</script>
-
-</body>
-</html>
